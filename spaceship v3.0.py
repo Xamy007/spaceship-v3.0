@@ -12,13 +12,11 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 
-# Initialize Pygame
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Shooter Enhanced")
 clock = pygame.time.Clock()
 
-# Load spaceship, enemy, and power-up images
 SPACESHIP_IMG = pygame.image.load(ROOT_DIR + "\\spaceship.png")
 ENEMY_IMG = pygame.image.load(ROOT_DIR + "\\enemy.png")
 POWER_UP_IMG = pygame.image.load(ROOT_DIR + "\\powerup.png")
@@ -26,7 +24,6 @@ HEALTH_PACK_IMG = pygame.image.load(ROOT_DIR + "\\health.png")
 SPEED_BOOST_IMG = pygame.image.load(ROOT_DIR + "\\speed_up.png")
 BOMB_IMG = pygame.image.load(ROOT_DIR + "\\bomb.png")
 
-# Resize the images
 SPACESHIP_IMG = pygame.transform.scale(SPACESHIP_IMG, (100, 100))
 ENEMY_IMG = pygame.transform.scale(ENEMY_IMG, (80, 80))
 POWER_UP_IMG = pygame.transform.scale(POWER_UP_IMG, (60, 60))
@@ -34,7 +31,6 @@ HEALTH_PACK_IMG = pygame.transform.scale(HEALTH_PACK_IMG, (60, 60))
 SPEED_BOOST_IMG = pygame.transform.scale(SPEED_BOOST_IMG, (60, 60))
 BOMB_IMG = pygame.transform.scale(BOMB_IMG, (60, 60))
 
-# Star class for background
 class Star:
     def __init__(self):
         self.x = random.randint(0, WIDTH)
@@ -51,7 +47,6 @@ class Star:
     def draw(self, surface):
         pygame.draw.circle(surface, WHITE, (self.x, self.y), self.size)
 
-# Spaceship class
 class Spaceship:
     def __init__(self):
         self.image = SPACESHIP_IMG
@@ -148,7 +143,6 @@ class Enemy:
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
-# Power-up class
 class PowerUp:
     def __init__(self):
         self.type = random.choice(["double_bullet", "shield", "speed_boost", "health", "bomb", "invincibility"])
@@ -172,7 +166,6 @@ class PowerUp:
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
-# Main function
 def main():
     running = True
     spaceship = Spaceship()
